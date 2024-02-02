@@ -1,10 +1,12 @@
 package br.com.example.viniciushfc.olisaude.entities.client;
 
 
+import br.com.example.viniciushfc.olisaude.dto.ClientDTO;
+import br.com.example.viniciushfc.olisaude.entities.healthProblem.HealthProblem;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.springframework.cglib.core.Local;
 
 import java.time.LocalDateTime;
 
@@ -26,8 +28,15 @@ public class Client {
     private LocalDateTime dateOfBirth;
     @NotNull(message = "Gender is mandatory")
     private GenderType genderType;
+    @Column(nullable = true)
     private HealthProblem healthProblem;
     private LocalDateTime creationDate;
     private LocalDateTime updateDate;
 
+    public Client(ClientDTO dto) {
+        this.name = dto.name();
+        this.dateOfBirth = dto.dateOfBirth();
+        this.genderType = dto.genderType();
+        this.healthProblem = dto.healthProblem();
+    }
 }
