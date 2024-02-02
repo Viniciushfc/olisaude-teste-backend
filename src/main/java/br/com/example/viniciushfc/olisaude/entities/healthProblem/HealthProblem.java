@@ -19,6 +19,7 @@ public class HealthProblem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String diseaseName;
+    @Column(nullable = true)
     private Integer degree;
 
     public HealthProblem(HealthProblemDTO dto) {
