@@ -41,6 +41,8 @@ public class ClientService {
         client.setHealthProblem(dto.healthProblem());
         client.setUpdateDate(LocalDateTime.now());
 
+        saveClient(client);
+
         return client;
     }
 
