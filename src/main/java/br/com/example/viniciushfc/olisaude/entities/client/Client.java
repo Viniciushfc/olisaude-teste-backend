@@ -31,7 +31,6 @@ public class Client {
     @NotNull(message = "Gender is mandatory")
     private GenderType genderType;
 
-
     private HealthProblem healthProblem;
 
     private LocalDateTime creationDate;
