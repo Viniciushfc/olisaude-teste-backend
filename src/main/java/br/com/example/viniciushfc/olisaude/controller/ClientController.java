@@ -31,17 +31,24 @@ public class ClientController {
         return new ResponseEntity<>(client, HttpStatus.OK);
     }
 
-    //Método para buscar um client específico.
+    //Endpoint para buscar um client específico.
     @GetMapping("/{id}")
     public ResponseEntity<Client> getClientById(@PathVariable Long id) {
         Client client = this.clientService.getClientById(id);
         return new ResponseEntity<>(client, HttpStatus.OK);
     }
 
-    //Método para buscar todos os clients.
+    //Endpoint para buscar todos os clients.
     @GetMapping
     public ResponseEntity<List<Client>> getAllClients() {
         List<Client> clients = this.clientService.getAllClients();
         return new ResponseEntity<>(clients, HttpStatus.OK);
+    }
+
+    //Endpoint para buscar top 10 pessoas com grau de doença mais alto.
+    @GetMapping("/clients/top-10-health-risk")
+    public ResponseEntity<List<Client>> getTop10ClientsWithHighestHealthRisk() {
+        List<Client> top10Clients = clientService.getTop10ClientsWithHighestHealthRisk();
+        return ResponseEntity.ok(top10Clients);
     }
 }
